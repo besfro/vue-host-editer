@@ -1,0 +1,53 @@
+{
+  "name": "host-editer",
+  "version": "1.0.0",
+  "description": "host 编辑器",
+  "author": "clc <lengchars@gmail.com>",
+  "scripts": {
+    "test": "vue-cli-service test:unit",
+    "build": "vue-cli-service build --target lib --name vue-host-editer src/main.js",
+    "lint": "vue-cli-service lint"
+  },
+  "main": "dist/vue-host-editer.umd.min.js",
+  "dependencies": {
+    "core-js": "^3.4.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-import": "^1.13.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-unused-vars": [
+        0
+      ],
+      "no-debugger": [
+        0
+      ],
+      "no-console": [
+        0
+      ]
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
