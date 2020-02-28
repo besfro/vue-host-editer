@@ -6,11 +6,9 @@
  * @LastEditTime: 2019-12-13 11:52:50
  -->
 <template>
-  <div class="container" :style="{height: height, width: width}">
+  <div class="container" :style="{height: height, width: width, background: background, fontSize: fontSize}">
     <div class="editer" spellcheck="false" contenteditable ref="editer" @keydown.ctrl.90="back" @keydown.ctrl.89="forward"></div>
-    <div class="tool">
-    
-    </div>  
+    <div class="tool"></div>  
   </div>
 </template>
 
@@ -77,6 +75,10 @@ export default {
     }
   },
   props: {
+    fontSize: {
+      type: String,
+      default: '14px'
+    },
     width: {
       type: String,
       default: '580px'
@@ -84,6 +86,10 @@ export default {
     height: {
       type: String,
       default: '600px'
+    },
+    background: {
+      type: String,
+      default: '#fff'
     },
     ipStylt: {
       type: String,
@@ -129,7 +135,7 @@ export default {
         styles: {
           ip: 'color: #1890ff',
           domain: 'color: green',
-          comments: 'color: #ccc'
+          comments: 'color: #999; font-style: italic; font-size: 12px;'
         }
       })
     },
@@ -218,7 +224,7 @@ export default {
     },
     emiter() {
       const hosts = this.getParserHost()
-      this.$emit('change', hosts, this.editerText)
+      this.$emit('change', hosts, this.parser.linesParseData, this.editerText)
     }
   },
   watch: {
@@ -235,6 +241,19 @@ export default {
 }
 </script>
 
+<style>
+.editer p:before {
+  font-size: 10px;
+  margin: 0 20px 0 -15px;
+  content: attr(data-line);
+  color: #ddd;
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  transform: scale(.9)
+}
+</style>
+
 <style scoped>
 .container {
   display: flex;
@@ -246,13 +265,39 @@ export default {
   outline: 0;
   overflow-y: scroll;
   letter-spacing: .8px;
-  height: 100%;
+  position: relative
+}
+.editer:before {
+  content: '';
+  top: 0;
+  width: 1px;
+  display: block;
+  background: #f1f1f1;
+  margin: -15px 0 -15px 10px;
+  position: absolute;
+  bottom: 0;
 }
 .tool {
-  min-width: 40px;
+  /* min-width: 40px; */
   height: 100%;
 }
 .editer p {
   padding: 0 0 5px;
+}
+.editer::-webkit-scrollbar {
+  width: 4px;
+  height: 14px;
+  background: rgba(0, 0, 0, 0);
+}
+
+.editer:hover::-webkit-scrollbar {
+  width: 4px;
+  height: 14px;
+  background: rgba(0, 0, 0, 0);
+}
+
+.editer:hover::-webkit-scrollbar-thumb {
+  border-radius: 60px;
+  background: rgba(0, 0, 0, .3)
 }
 </style>

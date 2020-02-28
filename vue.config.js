@@ -16,22 +16,11 @@ module.exports = {
   css: {
     extract: false
   },
-  devServer: {
-    allowedHosts: [
-      'test.com',
-      'hh.baidu.com'
-    ]
-  },
   configureWebpack: {
     resolve: {
       alias: {
         '@': resolve('src')
       }
     }
-  },
-  chainWebpack: config => {
-    config.externals({
-      chrome: 'chrome'
-    })
   }
 }

@@ -1,1 +1,2 @@
-export * from '@/components/HostEditer'
+import HostEditer from '@/components/HostEditer'
+export default HostEditer

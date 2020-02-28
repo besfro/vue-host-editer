@@ -129,9 +129,11 @@ class HostParser {
 
   // 添加解析数据
   _addLine(options) {
-    const id = `h-parser-l-${this.linesParseData.length}`
+    const line = this.linesParseData.length + 1
+    const id = `h-parser-l-${line}`
     const lineInfo = Object.assign({
       id,           // id
+      line,
       input: '',    // 127.0.0.1 yourdomain.com # 测试环境host
       replace: '',  // <span class="ip">127.0.0.1</span> yourdomain.com # 测试环境host
       el: null,
@@ -183,10 +185,11 @@ class HostParser {
   _createLineElement(lineInfo) {
     // 创建 element
     const el = this.context.createElement(this.tagName)
+    el.setAttribute('data-line', lineInfo.line)
     el.id = lineInfo.id
     el.hpLine = true
     el.innerHTML = lineInfo.replace
-    el.style.cssText = 'margin: 0; padding: 0 0 5px 0; letter-spacing: 1px;'
+    el.style.cssText = 'margin: 0; padding: 0 0 5px 0; letter-spacing: .6px;'
     lineInfo.el = el
     // 创建 match element
     const matches = lineInfo.matches
