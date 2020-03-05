@@ -5,9 +5,11 @@
   "author": "clc <lengchars@gmail.com>",
   "scripts": {
     "test": "vue-cli-service test:unit",
-    "build": "vue-cli-service build --target lib --name vue-host-editer src/main.js",
+    "build": "npm run build:umd & npm run build:esm",
+    "build:umd": "vue-cli-service build --target lib --name vue-host-editer src/main.js",
+    "build:esm": "set NODE_ENV=production & rollup --config rollup.config.js",
     "serve:demo": "vue-cli-service serve demo/main.js",
-    "debug": "node --inspect-brk=9229 .bin/vue-cli-service",
+    "debug": "node --inspect-brk=9229 node_modules/@vue/cli-service/bin/vue-cli-service.js build",
     "lint": "vue-cli-service lint"
   },
   "repository": {
@@ -18,18 +20,23 @@
     "host editer",
     "vue host editer"
   ],
-  "dependencies": {
-    "core-js": "^3.4.3",
-    "vue": "^2.6.10"
-  },
+  "main": "dist/vue-host-editer.umd.min.js",
+  "module": "dist/vue-host-editer.esm.js",
+  "sideEffects": false,
   "devDependencies": {
+    "@rollup/plugin-alias": "^3.0.1",
+    "@rollup/plugin-node-resolve": "^7.1.1",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
     "babel-eslint": "^10.0.3",
     "babel-plugin-import": "^1.13.0",
+    "core-js": "^3.4.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "rollup-plugin-uglify": "^6.0.4",
+    "rollup-plugin-vue": "^5.1.6",
+    "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {

@@ -62,6 +62,7 @@ const toFixed = (num = 0, decimal = 2) => {
  * @return {Object} 返回键值对象 ( .e.g. {institueName: 第三新, age: 20} )
  */
 const queryParser = str => {
+  console.log('ymd~~~~~~~~~~~~~')
   const fn = queryParser
   // 有缓存 返回缓存
   if(fn.cache && fn.cache[str]) {
