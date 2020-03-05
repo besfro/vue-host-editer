@@ -16,13 +16,13 @@ module.exports = {
   css: {
     extract: false
   },
-  // chainWebpack: config => {
-  //   if(process.argv.indexOf('--esm') !== -1) {
-  //     config.module
-  //       .rule('js')
-  //       .uses.delete('babel-loader')
-  //   }
-  // },
+  chainWebpack: config => {
+    if(process.argv.indexOf('--esm') !== -1) {
+      config.module
+        .rule('js')
+        .uses.delete('babel-loader')
+    }
+  },
   configureWebpack: {
     resolve: {
       alias: {
