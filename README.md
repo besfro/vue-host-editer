@@ -21,7 +21,7 @@ npm i --save vue-host-editer
 </template>
 
 <script>
-import VueHostEditer from "vue-host-editer"
+import HostEditer from "vue-host-editer"
 
 export default {
   name: 'app',
